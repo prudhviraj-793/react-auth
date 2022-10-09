@@ -23,14 +23,14 @@ const MainNavigation = () => {
             </li>
           )}
           {ctx.token && (
-            <div>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <button onClick={logoutHandler}>Logout</button>
-              </li>
-            </div>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          )}
+          {ctx.token && (
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
           )}
         </ul>
       </nav>
