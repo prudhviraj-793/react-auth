@@ -1,9 +1,11 @@
 import { useContext, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import Context from '../Context/Context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
   const ctx = useContext(Context)
+  const history = useHistory()
   const inputRef = useRef('')
   async function submitNewPsswd(e) {
     e.preventDefault()
@@ -21,7 +23,7 @@ const ProfileForm = () => {
       } 
     })
     const data = await response.json()
-    console.log(data)
+    history.replace('/')
   }
   function inputHandler(e) {
     e.preventDefault()
