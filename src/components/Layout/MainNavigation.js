@@ -1,17 +1,14 @@
-import { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Context from "../Context/Context";
-
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
 
-  const ctx = useContext(Context);
   const history = useHistory()
+  const token = localStorage.getItem(Object.keys(localStorage)[0]);
 
   function logoutHandler(e) {
     e.preventDefault();
-    ctx.removeToken();
+    localStorage.clear()
     history.replace('/')
   }
   return (
@@ -21,17 +18,17 @@ const MainNavigation = () => {
       </Link>
       <nav>
         <ul>
-          {!ctx.token && (
+          {!token && (
             <li>
               <Link to="/auth">Login</Link>
             </li>
           )}
-          {ctx.token && (
+          {token && (
             <li>
               <Link to="/profile">Profile</Link>
             </li>
           )}
-          {ctx.token && (
+          {token && (
             <li>
               <button onClick={logoutHandler}>Logout</button>
             </li>
